@@ -1,13 +1,18 @@
 package com.teamtreehouse.vending;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
 public class AlphaNumericChooserTest {
 
     AlphaNumericChooser chooser;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Before
     public void setUp() throws Exception {
@@ -33,5 +38,13 @@ public class AlphaNumericChooserTest {
     @Test(expected = InvalidLocationException.class)
     public void choosingLargeThanMaxIsNotAllowed() throws Exception {
         chooser.locationFromInput("C12");
+    }
+
+    @Test
+    public void constructingLargerThanAlphabetNotAllowed() throws Exception {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Maximum rows supported is 26");
+
+        new AlphaNumericChooser(27, 10);
     }
 }

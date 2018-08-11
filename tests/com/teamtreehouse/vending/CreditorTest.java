@@ -15,10 +15,6 @@ public class CreditorTest {
         creditor = new Creditor();
     }
 
-    @After
-    public void tearDown() throws Exception {
-        System.out.println("One test is completed");
-    }
 
     @Test
     public void addingFundsIncrementsAvaliableFunds() {
@@ -53,5 +49,8 @@ public class CreditorTest {
         assertEquals(0, creditor.getAvailableFunds());
     }
 
-
+    @Test(expected = NotEnoughFundsException.class)
+    public void deductMoreThanAvaliableFundsIsNotAllowed() throws Exception {
+        creditor.deduct(600);
+    }
 }

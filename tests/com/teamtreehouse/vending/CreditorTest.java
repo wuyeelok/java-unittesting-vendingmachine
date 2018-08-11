@@ -32,7 +32,7 @@ public class CreditorTest {
     }
 
     @Test
-    public void refundingReturnZeroInAvailableFunds() {
+    public void refundingResetsAvailableFundsToZero() {
 
         Creditor creditor = new Creditor();
         creditor.addFunds(60);

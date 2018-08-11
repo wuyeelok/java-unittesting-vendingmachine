@@ -8,5 +8,10 @@ public class CreditorTest {
 
     @Test
     public void refund() {
+        fail();
+    }
+
+    @Test
+    public void addingFundsIncrementsAvaliableFunds() {
     }
 }

@@ -24,4 +24,14 @@ public class AlphaNumericChooserTest {
         assertEquals("Proper row",1, loc.getRow());
         assertEquals("Proper column",3, loc.getColumn());
     }
+
+    @Test(expected = InvalidLocationException.class)
+    public void choosingWrongInputIsNotAllowed() throws Exception {
+        chooser.locationFromInput("WRONG");
+    }
+
+    @Test(expected = InvalidLocationException.class)
+    public void choosingLargeThanMaxIsNotAllowed() throws Exception {
+        chooser.locationFromInput("C12");
+    }
 }
